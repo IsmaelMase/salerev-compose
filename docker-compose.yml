@@ -1,0 +1,45 @@
+version: '3.6'
+services:
+  salerev:
+    image: ismaelmase/salerev
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6
+    volumes:
+      - /root/mongodb_data:/data/db
+    ports:
+        - 27017:27017
+
+  logspout:
+    image: gliderlabs/logspout:v3
+    command: 'syslog://logstash:5000'
+    links:
+      - logstash
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock'
+
+  logstash:
+    image: ludekvesely/logstash-json
+    environment:
+      - LOGSPOUT=ignore
+      - DROP_NON_JSON=false
+      - STDOUT=true
+    links:
+      - elasticsearch
+
+  kibana:
+    image: kibana
+    environment:
+      - LOGSPOUT=ignore
+    links:
+      - elasticsearch
+    ports:
+      - '5601:5601'
+
+  elasticsearch:
+    image: elasticsearch
+    environment:
+      - LOGSPOUT=ignore
