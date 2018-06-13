@@ -15,3 +15,5 @@ services:
     image: mongoclient/mongoclient:latest
     ports:
       - 3000:3000
+    links:
+      - mongo
