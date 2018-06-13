@@ -8,8 +8,6 @@ services:
       - mongo
   mongo:
     image: mongo:3.6
-    volumes:
-      - /root/mongodb_data:/data/db
     ports:
         - 27017:27017
 
@@ -43,3 +41,4 @@ services:
     image: elasticsearch
     environment:
       - LOGSPOUT=ignore
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
