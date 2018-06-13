@@ -41,4 +41,9 @@ services:
     image: elasticsearch
     environment:
       - LOGSPOUT=ignore
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 512mb
