@@ -18,7 +18,7 @@ services:
       - mongo
 
   salerev:
-    image: ismaelmase/salerev
+    image: ismaelmase/salesrev
     ports:
       - 8080:8080
     links:
