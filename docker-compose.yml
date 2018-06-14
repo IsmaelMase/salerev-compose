@@ -6,8 +6,8 @@ services:
     ports:
     - 27017:27017
     command: --smallfiles
-  #    volumes:
-  #      - home/root/mongodata:/data/db
+    volumes:
+      - home/root/mongodb_data:/data/db
 
 
   mongoclient:
