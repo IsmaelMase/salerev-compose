@@ -7,7 +7,7 @@ services:
     - 27017:27017
     command: --smallfiles
     volumes:
-      - home/root/mongodb_data:/data/db
+      - root/mongodb_data:/data/db
 
 
   mongoclient:
