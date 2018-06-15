@@ -27,4 +27,4 @@ services:
   angular: 
     image: ismaelmase/salesrev-cliente 
     ports:
-      - "4200:4200"
+      - 4200:4200
