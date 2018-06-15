@@ -23,8 +23,3 @@ services:
       - 8080:8080
     links:
       - mongo
-
-  angular: 
-    image: ismaelmase/salesrev-cliente 
-    ports:
-      - 4200:4200
